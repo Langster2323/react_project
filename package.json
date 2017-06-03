@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Langster2323/react_project/issues"
   },
-  "homepage": "https://github.com/Langster2323/react_project#readme"
+  "homepage": "https://github.com/Langster2323/react_project#readme",
+  "dependencies": {
+    "react": "^15.5.4"
+  }
 }
