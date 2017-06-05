@@ -1,6 +1,8 @@
 //A component as a function that returns a react virtual DOM element.
 //Components created and React.js start with a capital letter...
 //To differentiates our custom from the built in DOM components like H1 idv, span and others.
+
+//Simple virtual DOM layout
 function Application() {
   //returning virtual DOM elements
   return(
@@ -11,4 +13,4 @@ function Application() {
   );
 }
 
-ReactDOM.render(<h1>Hello!</h1>, document.getElementById('container'));
+ReactDOM.render(<Application />, document.getElementById('container'));
