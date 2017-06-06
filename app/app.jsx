@@ -1,15 +1,40 @@
-//A component as a function that returns a react virtual DOM element.
-//Components created and React.js start with a capital letter...
-//To differentiates our custom from the built in DOM components like H1 idv, span and others.
-
-//Simple virtual DOM layout
 function Application() {
-  //returning virtual DOM elements
-  return(
-    <div>
-      <h1>Hello from React</h1>
-    <p>I was rendered from the Application component</p>
+  return (
+    <div className="scoreboard">
+      <div className="header">
+        <h1>Scoreboard</h1>
+      </div>
+
+      <div className="players">
+        <div className="player">
+          <div className="player-name">
+            Nate Littlejon
+          </div>
+          <div className="player-score">
+            <div className="counter">
+              <button className="counter-action decrement"> - </button>
+     <div className="counter-score"> 20 </div>
+    <button className="counter-action increment"> + </button>
+            </div>
+          </div>
+        </div>
+
+     <div className="player">
+          <div className="player-name">
+            Cameron
+          </div>
+          <div className="player-score">
+            <div className="counter">
+              <button className="counter-action decrement"> - </button>
+     <div className="counter-score"> 20 </div>
+    <button className="counter-action increment"> + </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
   );
 }
 
