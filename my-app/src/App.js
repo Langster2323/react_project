@@ -2,20 +2,56 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+function Application(props) {
+  return (
+    <div className="scoreboard">
+      <div className="header">
+        <h1>{props.title}</h1>
       </div>
-    );
-  }
+
+      <div className="players">
+        <div className="player">
+          <div className="player-name">
+            Nate Littlejon
+          </div>
+          <div className="player-score">
+            <div className="counter">
+              <button className="counter-action decrement"> - </button>
+     <div className="counter-score"> 20 </div>
+    <button className="counter-action increment"> + </button>
+            </div>
+          </div>
+        </div>
+
+     <div className="player">
+          <div className="player-name">
+            Cameron
+          </div>
+          <div className="player-score">
+            <div className="counter">
+              <button className="counter-action decrement"> - </button>
+     <div className="counter-score"> 20 </div>
+    <button className="counter-action increment"> + </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  );
 }
+//proptypes is an object that contains all the keys our component can take.
+Application.propTypes = {
+  //type definition
+  title: React.PropTypes.string,
+};
+
+// To give a property a default value
+Application.defaultProps = {
+  title: "Scoreboard",
+}
+
+ReactDOM.render(<Application />, document.getElementById('container'));
 
 export default App;
