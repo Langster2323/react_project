@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 
@@ -53,5 +54,3 @@ Application.defaultProps = {
 }
 
 ReactDOM.render(<Application />, document.getElementById('container'));
-
-export default App;
