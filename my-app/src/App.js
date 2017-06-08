@@ -3,43 +3,51 @@ import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 
-function Application(props) {
+function Header (props) {
   return (
-    <div className="scoreboard">
-      <div className="header">
+    <div className="header">
         <h1>{props.title}</h1>
       </div>
+  );
+}
 
-      <div className="players">
-        <div className="player">
-          <div className="player-name">
-            Nate Littlejon
-          </div>
-          <div className="player-score">
-            <div className="counter">
-              <button className="counter-action decrement"> - </button>
-     <div className="counter-score"> 20 </div>
-    <button className="counter-action increment"> + </button>
-            </div>
-          </div>
-        </div>
+Header.propTypes = {
+  //type definition
+  title: React.PropTypes.string.isRequired,
+};
 
-     <div className="player">
-          <div className="player-name">
-            Cameron
-          </div>
-          <div className="player-score">
-            <div className="counter">
-              <button className="counter-action decrement"> - </button>
-     <div className="counter-score"> 20 </div>
-    <button className="counter-action increment"> + </button>
-            </div>
-          </div>
+function Player(props) {
+  return (
+    <div className="player">
+      <div className="player-name">
+        {props.name}
+      </div>
+      <div className="player-score">
+        <div className="counter">
+          <button className="counter-action decrement"> - </button>
+ <div className="counter-score"> {props.score} </div>
+<button className="counter-action increment"> + </button>
         </div>
       </div>
     </div>
+  );
+}
 
+Player.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  score: React.PropTypes.number.isRequired,
+}
 
+function Application(props) {
+  return (
+    <div className="scoreboard">
+      <Header title={props.title} />
+
+      <div className="players">
+        <Player name="Nate" score={20} />
+        <Player name="Ahkeem" score={20} />
+        </div>
+      </div>
   );
 }
 //proptypes is an object that contains all the keys our component can take.
