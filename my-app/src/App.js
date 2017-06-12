@@ -66,6 +66,7 @@ function Application(props) {
     <div className="scoreboard">
       <Header title={props.title} />
     //The key is helping the loop understand exactly which objects map to each virtual DOM elements
+     //The map function helps to create a list of JSX elements from an arry of JavaScript values
       <div className="players">
         {props.players.map(function(player) {
           return <Player name={player.name} score={player.score} key={player.id}/>
