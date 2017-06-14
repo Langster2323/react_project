@@ -105,5 +105,5 @@ Application.propTypes = {
 Application.defaultProps = {
   title: "Scoreboard",
 }
-
+sdfasdf
 ReactDOM.render(<Application players={PLAYERS}/>, document.getElementById('container'));
