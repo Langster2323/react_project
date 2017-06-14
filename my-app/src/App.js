@@ -46,7 +46,7 @@ Header.propTypes = {
     );
     }
   });
-dfd
+
 
 function Player(props) {
   return (
