@@ -36,6 +36,19 @@ Header.propTypes = {
         score: 0,
     }
   },
+
+    incrementScore: function() {
+      this.setState({
+        score: (this.state.score + 1),
+      });
+    },
+
+    decrementScore: function() {
+      this.setState({
+        score: (this.state.score - 1),
+      })
+    },
+
     render: function() {
         return (
          <div className="counter">
