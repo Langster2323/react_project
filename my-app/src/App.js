@@ -29,12 +29,11 @@ Header.propTypes = {
 };
 
   var Counter = React.createClass({
-    PropTypes: {
-    },
+    PropTypes: {},
 
     getInitialState: function() {
       return {
-        score: 0
+        score: 0,
     }
   },
     render: function() {
