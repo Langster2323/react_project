@@ -50,15 +50,19 @@ Header.propTypes = {
   },
 
     render: function() {
-        return (
-         <div className="counter">
+      
+    }
+  });
+
+  function Counter(props) {
+    return (
+      <div className="counter">
         <button className="counter-action decrement" onClick={this.decrementScore}> - </button>
         <div className="counter-score"> {this.state.score} </div>
         <button className="counter-action increment" onClick={this.incrementScore}> + </button>
       </div>
     );
-    }
-  });
+  }
 
 
 function Player(props) {
