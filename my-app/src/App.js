@@ -16,13 +16,37 @@ var PLAYERS = [
   },
 ];
 
+  function Stats(props) {
+    var totalPlayers = props.players.length;
+
+    return (
+      <table className="stats">
+        <tbody>
+          <tr>
+            <td>Players:</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Total Points:</td>
+            <td>{totalPlayers}</td>
+          </tr>
+        </tbody>
+      </table>
+    )
+  }
+
 function Header(props) {
   return (
     <div className="header">
+  <Stats />
       <h1>{props.title}</h1>
     </div>
   );
 }
+
+  Stats.propTypes = {
+    players: React.PropTypes.array.isRequired,
+  }
 
 Header.propTypes = {
   title: React.PropTypes.string.isRequired,
