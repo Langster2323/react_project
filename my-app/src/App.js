@@ -23,6 +23,7 @@ var PLAYERS = [
           <form>
             <input type="text" />
             <input type="submit" value="Add Player" />
+          </form>
         </div>
       );
     }
