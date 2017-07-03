@@ -155,4 +155,4 @@ this.setState(this.state);
 
   });
 
-ReactDOM.render(<Application initialPlayers={PLAYERS}/>, document.getElementById('container'));
+ReactDOM.render(<Application initialPlayers={PLAYERS}/>, container);
