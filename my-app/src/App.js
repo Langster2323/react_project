@@ -113,6 +113,7 @@ function Player(props) {
     <div className="player">
       <div className="player-name">
   {props.name}
+  <a className="remove-player" onClick={props.onRemove}✓</a>
   </div>
   <div className="player-score">
     <Counter score={props.score} onChange={props.onScoreChange}/>
