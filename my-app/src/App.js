@@ -196,7 +196,7 @@ var Application = React.createClass({
   onPlayerAdd: function(name) {
     this.state.players.push({
       name: name,
-      score: 0,
+      score: 20,
       id: nextId,
     });
     this.setState(this.state);
