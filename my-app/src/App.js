@@ -58,7 +58,7 @@ var nextId = 4;
           :
           <button onClick={this.onStart}>Start</button>
           }
-          <button onClick={this.onRest}>Reset</button>
+          <button onClick={this.onReset}>Reset</button>
         </div>
       );
     }
