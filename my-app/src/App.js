@@ -23,6 +23,18 @@ var nextId = 4;
         running: false,
       }
     },
+
+  componentDidMount: function() {
+    this.interval = setInterval(this.onTick, 100);
+  },
+
+  componentwillUnmount: function() {
+    clearInterval(this.interval);
+  },
+
+  onTick: function() {
+    console.log(onTick);
+  },
     /*Implemented state within the start and stop button*/
     onStart: function() {
       this.setState({ running: true });
