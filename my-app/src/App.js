@@ -21,6 +21,8 @@ var nextId = 4;
     getInitialState: function() {
       return {
         running: false,
+        elapsedTime: 0,
+        previousTime: 0,
       }
     },
 
@@ -33,11 +35,21 @@ var nextId = 4;
   },
 
   onTick: function() {
+    if (this.state.running) {
+      var now = Date.now();
+      this.setState({
+        previousTime: now,
+        elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
+      });
+    }
     console.log(onTick);
   },
     /*Implemented state within the start and stop button*/
     onStart: function() {
-      this.setState({ running: true });
+      this.setState({
+        running: true,
+        previousTime: Date.now(),
+       });
     },
 
     onStop: function() {
@@ -45,14 +57,18 @@ var nextId = 4;
     },
 
     onReset: function() {
+      this.setState({
+        elapsedTime: 0,
+        previousTime: Date.now(),
+      });
     },
 
     render() {
-
+      var seconds = Math.floor(this.state.elapsedTime / 1000);
       return (
         <div className="stopwatch">
           <h2>Stopwatch</h2>
-          <div className="stopwatch-time">0</div>
+          <div className="stopwatch-time">{seconds}</div>
           { this.state.running ?
           <button onClick={this.onStop}>Stop</button>
           :
