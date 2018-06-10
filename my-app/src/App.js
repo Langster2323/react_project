@@ -17,7 +17,11 @@ let PLAYERS = [
 ];
 var nextId = 4;
   /*In order to have state, impliment getInitialState*/
-  var Stopwatch = React.createClass({
+  class Stopwatch extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
     getInitialState: () => {
       return {
         running: false,
@@ -78,9 +82,13 @@ var nextId = 4;
         </div>
       );
     }
-  });
+  };
 
-let AddPlayerForm = React.createClass({
+class AddPlayerForm extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   propTypes: {
     onAdd: React.PropTypes.func.isRequired,
   },
@@ -113,11 +121,11 @@ let AddPlayerForm = React.createClass({
       </div>
     );
   }
-});
+}
 
  const Stats = props => {
   var totalPlayers = props.players.length;
-  var totalPoints = props.players.reduce(function(total, player){
+  var totalPoints = props.players.reduce((total, player) => {
     return total + player.score;
   }, 0);
 
@@ -159,9 +167,9 @@ Header.propTypes = {
 const Counter = props => {
   return (
     <div className="counter">
-      <button className="counter-action decrement" onClick={function() {props.onChange(-1);}} > - </button>
+      <button className="counter-action decrement" onClick={() => {props.onChange(-1);}} > - </button>
       <div className="counter-score"> {props.score} </div>
-      <button className="counter-action increment" onClick={function() {props.onChange(1);}}> + </button>
+      <button className="counter-action increment" onClick={() => {props.onChange(1);}}> + </button>
     </div>
   );
 }
@@ -194,7 +202,11 @@ Player.propTypes = {
 
 
 
-let Application = React.createClass({
+class Application extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
   propTypes: {
     title: React.PropTypes.string,
     initialPlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
@@ -257,7 +269,7 @@ let Application = React.createClass({
       </div>
     );
   }
-});
+}
 
 
 
