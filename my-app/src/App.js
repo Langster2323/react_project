@@ -1,4 +1,7 @@
-let PLAYERS = [
+import React from 'react';
+import PropTypes from 'prop-types';
+
+var PLAYERS = [
   {
     name: "Jim Hoskins",
     score: 31,
@@ -90,7 +93,7 @@ class AddPlayerForm extends React.Component {
   }
 
   propTypes: {
-    onAdd: React.PropTypes.func.isRequired,
+    onAdd: PropTypes.func.isRequired,
   },
 
   getInitialState: () => {
@@ -146,7 +149,7 @@ class AddPlayerForm extends React.Component {
 }
 
 Stats.propTypes = {
-  players: React.PropTypes.array.isRequired,
+  players: PropTypes.array.isRequired,
 };
 
 const Header = props => {
@@ -160,8 +163,8 @@ const Header = props => {
 }
 
 Header.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  players: React.PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  players: PropTypes.array.isRequired,
 };
 
 const Counter = props => {
@@ -175,8 +178,8 @@ const Counter = props => {
 }
 
 Counter.propTypes = {
-  score: React.PropTypes.number.isRequired,
-  onChange: React.PropTypes.func.isRequired,
+  score: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 const Player = props => {
@@ -194,10 +197,10 @@ const Player = props => {
 }
 
 Player.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  score: React.PropTypes.number.isRequired,
-  onScoreChange: React.PropTypes.func.isRequired,
-  onRemove: React.PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  onScoreChange: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
 };
 
 
@@ -206,13 +209,13 @@ class Application extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
   propTypes: {
-    title: React.PropTypes.string,
-    initialPlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
-      name: React.PropTypes.string.isRequired,
-      score: React.PropTypes.number.isRequired,
-      id: React.PropTypes.number.isRequired,
+    title: PropTypes.string,
+    initialPlayers: PropTypes.arrayOf(React.PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      score: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
     })).isRequired,
   },
 
