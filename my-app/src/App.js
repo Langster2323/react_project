@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+import './App.css';
 
-var PLAYERS = [
+export const PLAYERS = [
   {
     name: "Jim Hoskins",
     score: 31,
@@ -23,52 +25,48 @@ var nextId = 4;
   class Stopwatch extends React.Component {
     constructor(props) {
       super(props);
-    }
-
-    getInitialState: () => {
-      return {
+      this.state = {
         running: false,
         elapsedTime: 0,
         previousTime: 0,
       }
-    },
+    }
 
-  componentDidMount: () => {
-    this.interval = setInterval(this.onTick, 100);
-  },
+  componentDidMount = () => {
+    this.interval = setInterval(this.onTick , 100);
+  }
 
-  componentwillUnmount: () => {
+  componentwillUnmount = () => {
     clearInterval(this.interval);
-  },
+  }
 
-  onTick: () => {
+  onTick = () => {
     if (this.state.running) {
-      let now = Date.now();
+      var now = Date.now();
       this.setState({
         previousTime: now,
         elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
       });
     }
-    console.log(onTick);
-  },
+  }
     /*Implemented state within the start and stop button*/
-    onStart: () => {
+    onStart = () => {
       this.setState({
         running: true,
         previousTime: Date.now(),
        });
-    },
+    }
 
-    onStop: () => {
+    onStop = () => {
       this.setState({ running: false });
-    },
+    }
 
-    onReset: () => {
+    onReset = () => {
       this.setState({
         elapsedTime: 0,
         previousTime: Date.now(),
       });
-    },
+    }
 
     render() {
       var seconds = Math.floor(this.state.elapsedTime / 1000);
@@ -90,31 +88,30 @@ var nextId = 4;
 class AddPlayerForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+       name: "",
+     };
+   }
+
+  // propTypes: {
+  //   onAdd: PropTypes.func.isRequired,
+  // }
+
+
+
+  onNameChange = e => {
+    this.setState({name: e.target.value});
   }
 
-  propTypes: {
-    onAdd: PropTypes.func.isRequired,
-  },
-
-  getInitialState: () => {
-    return {
-      name: "",
-    };
-  },
-
-  onNameChange: e => {
-    this.setState({name: e.target.value});
-  },
-
-  onSubmit: e => {
+  onSubmit = e => {
     e.preventDefault();
 
     this.props.onAdd(this.state.name);
     this.setState({name: ""});
-  },
+  }
 
 
-  render: () => {
+  render = () => {
     return (
       <div className="add-player-form">
         <form onSubmit={this.onSubmit}>
@@ -208,35 +205,30 @@ Player.propTypes = {
 class Application extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {players: props.initialPlayers}
   }
 
-  propTypes: {
-    title: PropTypes.string,
-    initialPlayers: PropTypes.arrayOf(React.PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      score: PropTypes.number.isRequired,
-      id: PropTypes.number.isRequired,
-    })).isRequired,
-  },
+  // propTypes: {
+  //   title: PropTypes.string,
+  //   initialPlayers: PropTypes.arrayOf(React.PropTypes.shape({
+  //     name: PropTypes.string.isRequired,
+  //     score: PropTypes.number.isRequired,
+  //     id: PropTypes.number.isRequired,
+  //   })).isRequired,
+  // },
 
-  getDefaultProps: () => {
+  getDefaultProps = () => {
     return {
       title: "Scoreboard",
     }
-  },
+  }
 
-  getInitialState: () => {
-    return {
-      players: this.props.initialPlayers,
-    };
-  },
-
-  onScoreChange: (index, delta) => {
+  onScoreChange = (index, delta) => {
     this.state.players[index].score += delta;
     this.setState(this.state);
-  },
+  }
 
-  onPlayerAdd: name => {
+  onPlayerAdd = name => {
     this.state.players.push({
       name: name,
       score: 20,
@@ -244,14 +236,14 @@ class Application extends React.Component {
     });
     this.setState(this.state);
     nextId += 1;
-  },
+  }
 
-  onRemovePlayer: index => {
+  onRemovePlayer = index => {
     this.state.players.splice(index, 1);
     this.setState(this.state);
-  },
+  }
 
-  render: () => {
+  render = () => {
     return (
       <div className="scoreboard">
         <Header title={this.props.title} players={this.state.players} />
@@ -274,6 +266,4 @@ class Application extends React.Component {
   }
 }
 
-
-
-ReactDOM.render(<Application initialPlayers={PLAYERS}/>, container);
+export default Application;
