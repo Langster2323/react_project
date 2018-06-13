@@ -252,13 +252,13 @@ class Application extends React.Component {
           {this.state.players.map((player, index) => {
             return (
               <Player
-                onScoreChange={(delta) => {this.onScoreChange(index ,delta)}.bind(this)}
-                onRemove={() => {this.onRemovePlayer(index)}.bind(this)}
+                onScoreChange={(delta) => {this.onScoreChange(index ,delta)}}
+                onRemove={() => {this.onRemovePlayer(index)}}
                 name={player.name}
                 score={player.score}
                 key={player.id} />
             );
-          }.bind(this))}
+          })}
         </div>
         <AddPlayerForm onAdd={this.onPlayerAdd} />
       </div>
