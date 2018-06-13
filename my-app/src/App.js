@@ -249,11 +249,11 @@ class Application extends React.Component {
         <Header title={this.props.title} players={this.state.players} />
 
         <div className="players">
-          {this.state.players.map(function(player, index) {
+          {this.state.players.map((player, index) => {
             return (
               <Player
-                onScoreChange={function(delta) {this.onScoreChange(index ,delta)}.bind(this)}
-                onRemove={function() {this.onRemovePlayer(index)}.bind(this)}
+                onScoreChange={(delta) => {this.onScoreChange(index ,delta)}.bind(this)}
+                onRemove={() => {this.onRemovePlayer(index)}.bind(this)}
                 name={player.name}
                 score={player.score}
                 key={player.id} />
