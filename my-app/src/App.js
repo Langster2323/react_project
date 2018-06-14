@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import './App.css';
 
+import Stopwatch from './components/stop-watch';
+import Player from './components/player';
+import AddPlayerForm from './components/add-player-form';
+import Stats from './components/stats';
+import Header from './components/header';
+
 export const PLAYERS = [
   {
     name: "Jim Hoskins",
@@ -22,185 +28,6 @@ export const PLAYERS = [
 ];
 var nextId = 4;
   /*In order to have state, impliment getInitialState*/
-  class Stopwatch extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        running: false,
-        elapsedTime: 0,
-        previousTime: 0,
-      }
-    }
-
-  componentDidMount = () => {
-    this.interval = setInterval(this.onTick , 100);
-  }
-
-  componentwillUnmount = () => {
-    clearInterval(this.interval);
-  }
-
-  onTick = () => {
-    if (this.state.running) {
-      var now = Date.now();
-      this.setState({
-        previousTime: now,
-        elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
-      });
-    }
-  }
-    /*Implemented state within the start and stop button*/
-    onStart = () => {
-      this.setState({
-        running: true,
-        previousTime: Date.now(),
-       });
-    }
-
-    onStop = () => {
-      this.setState({ running: false });
-    }
-
-    onReset = () => {
-      this.setState({
-        elapsedTime: 0,
-        previousTime: Date.now(),
-      });
-    }
-
-    render() {
-      var seconds = Math.floor(this.state.elapsedTime / 1000);
-      return (
-        <div className="stopwatch">
-          <h2>Stopwatch</h2>
-          <div className="stopwatch-time">{seconds}</div>
-          { this.state.running ?
-          <button onClick={this.onStop}>Stop</button>
-          :
-          <button onClick={this.onStart}>Start</button>
-          }
-          <button onClick={this.onReset}>Reset</button>
-        </div>
-      );
-    }
-  };
-
-class AddPlayerForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-       name: "",
-     };
-   }
-
-  // propTypes: {
-  //   onAdd: PropTypes.func.isRequired,
-  // }
-
-
-
-  onNameChange = e => {
-    this.setState({name: e.target.value});
-  }
-
-  onSubmit = e => {
-    e.preventDefault();
-
-    this.props.onAdd(this.state.name);
-    this.setState({name: ""});
-  }
-
-
-  render = () => {
-    return (
-      <div className="add-player-form">
-        <form onSubmit={this.onSubmit}>
-          <input type="text" value={this.state.name} onChange={this.onNameChange} />
-          <input type="submit" value="Add Player" />
-        </form>
-      </div>
-    );
-  }
-}
-
- const Stats = props => {
-  var totalPlayers = props.players.length;
-  var totalPoints = props.players.reduce((total, player) => {
-    return total + player.score;
-  }, 0);
-
-  return (
-    <table className="stats">
-      <tbody>
-        <tr>
-          <td>Players:</td>
-          <td>{totalPlayers}</td>
-        </tr>
-        <tr>
-          <td>Total Points:</td>
-          <td>{totalPoints}</td>
-        </tr>
-      </tbody>
-    </table>
-  )
-}
-
-Stats.propTypes = {
-  players: PropTypes.array.isRequired,
-};
-
-const Header = props => {
-  return (
-    <div className="header">
-      <Stats players={props.players}/>
-      <h1>{props.title}</h1>
-      <Stopwatch />
-    </div>
-  );
-}
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  players: PropTypes.array.isRequired,
-};
-
-const Counter = props => {
-  return (
-    <div className="counter">
-      <button className="counter-action decrement" onClick={() => {props.onChange(-1);}} > - </button>
-      <div className="counter-score"> {props.score} </div>
-      <button className="counter-action increment" onClick={() => {props.onChange(1);}}> + </button>
-    </div>
-  );
-}
-
-Counter.propTypes = {
-  score: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
-}
-
-const Player = props => {
-  return (
-    <div className="player">
-      <div className="player-name">
-        <a className="remove-player" onClick={props.onRemove}>✖</a>
-        {props.name}
-      </div>
-      <div className="player-score">
-        <Counter score={props.score} onChange={props.onScoreChange} />
-      </div>
-    </div>
-  );
-}
-
-Player.propTypes = {
-  name: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
-  onScoreChange: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired,
-};
-
-
 
 class Application extends React.Component {
   constructor(props) {
