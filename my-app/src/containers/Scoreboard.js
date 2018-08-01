@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import '../App.css';
 
-import Stopwatch from '../components/stop-watch';
 import Player from '../components/player';
 import AddPlayerForm from '../components/add-player-form';
-import Stats from '../components/stats';
 import Header from '../components/header';
 
 export const PLAYERS = [
