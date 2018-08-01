@@ -32,15 +32,6 @@ export default class Scoreboard extends Component {
     this.state = {players: props.initialPlayers}
   }
 
-  // propTypes: {
-  //   title: PropTypes.string,
-  //   initialPlayers: PropTypes.arrayOf(React.PropTypes.shape({
-  //     name: PropTypes.string.isRequired,
-  //     score: PropTypes.number.isRequired,
-  //     id: PropTypes.number.isRequired,
-  //   })).isRequired,
-  // },
-
   getDefaultProps = () => {
     return {
       title: "Scoreboard",
