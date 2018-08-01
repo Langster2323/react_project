@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../App.css';
 
-class AddPlayerForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+export default class AddPlayerForm extends Component {
+    state = {
        name: "",
      };
-   }
 
   propTypes: {
     onAdd: PropTypes.func.isRequired,
@@ -39,5 +36,3 @@ class AddPlayerForm extends React.Component {
     );
   }
 }
-
-export default AddPlayerForm;
