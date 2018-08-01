@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import '../App.css';
 
@@ -26,7 +26,7 @@ export const PLAYERS = [
 var nextId = 4;
   /*In order to have state, impliment getInitialState*/
 
-class Scoreboard extends React.Component {
+export default class Scoreboard extends Component {
   constructor(props) {
     super(props);
     this.state = {players: props.initialPlayers}
@@ -89,5 +89,3 @@ class Scoreboard extends React.Component {
     );
   }
 }
-
-export default Scoreboard;
