@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Scoreboard, { PLAYERS } from './Scoreboard';
+import Scoreboard, { PLAYERS } from './containers/Scoreboard';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import '../App.css';
 
-class Stopwatch extends React.Component {
+export default class Stopwatch extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,5 +63,3 @@ onTick = () => {
     );
   }
 };
-
-export default Stopwatch;
