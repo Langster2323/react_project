@@ -6,76 +6,57 @@ import Player from '../components/player';
 import AddPlayerForm from '../components/add-player-form';
 import Header from '../components/header';
 
-export const PLAYERS = [
-  {
-    name: "Jim Hoskins",
-    score: 31,
-    id: 1,
-  },
-  {
-    name: "Andrew Chalkley",
-    score: 35,
-    id: 2,
-  },
-  {
-    name: "Alena Holligan",
-    score: 42,
-    id: 3,
-  },
-];
-var nextId = 4;
-  /*In order to have state, impliment getInitialState*/
-
 export default class Scoreboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {players: props.initialPlayers}
-  }
-
-  getDefaultProps = () => {
-    return {
-      title: "Scoreboard",
-    }
-  }
+  state = {
+    players: [
+      {
+        name: 'Jim Hoskins',
+        score: 31,
+      },
+      {
+        name: 'Andrew Chalkley',
+        score: 20,
+      },
+      {
+        name: 'Alena Holligan',
+        score: 50,
+      },
+    ],
+  };
 
   onScoreChange = (index, delta) => {
     this.state.players[index].score += delta;
     this.setState(this.state);
-  }
+  };
 
-  onPlayerAdd = name => {
-    this.state.players.push({
-      name: name,
-      score: 20,
-      id: nextId,
-    });
+  onAddPlayer = (name) => {
+    this.state.players.push({ name: name, score: 0 });
     this.setState(this.state);
-    nextId += 1;
-  }
+  };
 
-  onRemovePlayer = index => {
+  onRemovePlayer = (index) => {
     this.state.players.splice(index, 1);
     this.setState(this.state);
-  }
+  };
 
-  render = () => {
+  render() {
     return (
       <div className="scoreboard">
-        <Header title={this.props.title} players={this.state.players} />
-
+        <Header players={this.state.players} />
         <div className="players">
-          {this.state.players.map((player, index) => {
-            return (
-              <Player
-                onScoreChange={(delta) => {this.onScoreChange(index ,delta)}}
-                onRemove={() => {this.onRemovePlayer(index)}}
-                name={player.name}
-                score={player.score}
-                key={player.id} />
-            );
-          })}
+          {this.state.players.map(function(player, index) {
+             return (
+               <Player
+                 name={player.name}
+                 score={player.score}
+                 key={player.name}
+                 onScoreChange={(delta) => this.onScoreChange(index, delta)}
+                 onRemove={() => this.onRemovePlayer(index)}
+               />
+             );
+           }.bind(this))}
         </div>
-        <AddPlayerForm onAdd={this.onPlayerAdd} />
+        <AddPlayerForm onAdd={this.onAddPlayer} />
       </div>
     );
   }
