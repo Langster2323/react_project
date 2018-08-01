@@ -2,14 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import '../App.css';
 
 export default class Stopwatch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       running: false,
       elapsedTime: 0,
       previousTime: 0,
     }
-  }
 
 componentDidMount = () => {
   this.interval = setInterval(this.onTick , 100);
