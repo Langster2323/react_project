@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App, { PLAYERS } from './App';
+import { render } from 'react-dom';
+import Scoreboard, { PLAYERS } from './Scoreboard';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 
-ReactDOM.render(<App initialPlayers={PLAYERS}/>, document.getElementById('root'));
+render(<Scoreboard initialPlayers={PLAYERS}/>, document.getElementById('root'));
 registerServiceWorker();

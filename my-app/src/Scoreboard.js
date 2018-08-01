@@ -29,7 +29,7 @@ export const PLAYERS = [
 var nextId = 4;
   /*In order to have state, impliment getInitialState*/
 
-class Application extends React.Component {
+class Scoreboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {players: props.initialPlayers}
@@ -93,4 +93,4 @@ class Application extends React.Component {
   }
 }
 
-export default Application;
+export default Scoreboard;
