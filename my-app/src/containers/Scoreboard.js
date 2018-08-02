@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import { bindActionsCreators } from 'redux';
+import * as PlayerActionCreators from '../actions/players';
 import { connect } from 'react-redux';
 import '../App.css';
 
@@ -7,24 +9,35 @@ import AddPlayerForm from '../components/add-player-form';
 import Header from '../components/header';
 
 class Scoreboard extends Component {
+
+  static propTypes = {
+    players: PropTypes.array.isRequired
+  }
+
   render() {
+    const { dispatch, players } = this.props;
+    const addPlayer = bindActionsCreators(PlayerActionCreators.addPlayer, dispatch);
+    const removePlayer = bindActionsCreators(PlayerActionCreators.removePlayer, dispatch);
+    const updatePlayerScore = bindActionsCreators(PlayerActionCreators.updatePlayerScorePlayer, dispatch);
+
+    const playerComponents = players.map((player, index) =>
+      <Player
+        index={index}
+        name={player.name}
+        score={player.score}
+        key={player.name}
+        updatePlayerScore={updatePlayerScore}
+        removePlayer={removePlayer}
+       />
+  );
+
     return (
       <div className="scoreboard">
-        <Header players={this.state.players} />
+        <Header players={players} />
         <div className="players">
-          {this.state.players.map(function(player, index) {
-             return (
-               <Player
-                 name={player.name}
-                 score={player.score}
-                 key={player.name}
-                 onScoreChange={(delta) => this.onScoreChange(index, delta)}
-                 onRemove={() => this.onRemovePlayer(index)}
-               />
-             );
-           }.bind(this))}
+          { playerComponents }
         </div>
-        <AddPlayerForm onAdd={this.onAddPlayer} />
+        <AddPlayerForm addPlayer={addPlayer} />
       </div>
     );
   }
