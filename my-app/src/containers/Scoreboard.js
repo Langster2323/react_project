@@ -7,38 +7,6 @@ import AddPlayerForm from '../components/add-player-form';
 import Header from '../components/header';
 
 class Scoreboard extends Component {
-  state = {
-    players: [
-      {
-        name: 'Jim Hoskins',
-        score: 31,
-      },
-      {
-        name: 'Andrew Chalkley',
-        score: 20,
-      },
-      {
-        name: 'Alena Holligan',
-        score: 50,
-      },
-    ],
-  };
-
-  onScoreChange = (index, delta) => {
-    this.state.players[index].score += delta;
-    this.setState(this.state);
-  };
-
-  onAddPlayer = (name) => {
-    this.state.players.push({ name: name, score: 0 });
-    this.setState(this.state);
-  };
-
-  onRemovePlayer = (index) => {
-    this.state.players.splice(index, 1);
-    this.setState(this.state);
-  };
-
   render() {
     return (
       <div className="scoreboard">
