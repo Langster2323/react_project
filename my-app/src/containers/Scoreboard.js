@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { bindActionsCreators } from 'redux';
-import * as PlayerActionCreators from '../actions/players';
+import { bindActionCreators } from 'redux';
+import * as PlayerActionCreators from '../actions/player';
 import { connect } from 'react-redux';
 import '../App.css';
 
@@ -16,9 +16,9 @@ class Scoreboard extends Component {
 
   render() {
     const { dispatch, players } = this.props;
-    const addPlayer = bindActionsCreators(PlayerActionCreators.addPlayer, dispatch);
-    const removePlayer = bindActionsCreators(PlayerActionCreators.removePlayer, dispatch);
-    const updatePlayerScore = bindActionsCreators(PlayerActionCreators.updatePlayerScorePlayer, dispatch);
+    const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
+    const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
+    const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
 
     const playerComponents = players.map((player, index) =>
       <Player
@@ -49,4 +49,4 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps)(Scoreboard)
+export default connect(mapStateToProps)(Scoreboard);
