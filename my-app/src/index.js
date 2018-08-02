@@ -10,7 +10,7 @@ const store = createStore(
 );
 
 render(
-  <Provider stoer={store}>
+  <Provider store={store}>
   <Scoreboard />
   </Provider>,
   document.getElementById('root')

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import '../App.css';
 
@@ -6,7 +6,7 @@ import Player from '../components/player';
 import AddPlayerForm from '../components/add-player-form';
 import Header from '../components/header';
 
-export default class Scoreboard extends Component {
+class Scoreboard extends Component {
   state = {
     players: [
       {
@@ -61,3 +61,11 @@ export default class Scoreboard extends Component {
     );
   }
 }
+
+const mapStateToProps = state => (
+  {
+    players: state
+  }
+);
+
+export default connect(mapStateToProps)(Scoreboard)
