@@ -33,7 +33,9 @@ class Scoreboard extends Component {
 
     return (
       <div className="scoreboard">
-        <Header players={players} />
+        <Header
+        players={players}
+        title="Scoreboard" />
         <div className="players">
           { playerComponents }
         </div>

@@ -2,18 +2,18 @@ import React, { PropTypes } from 'react';
 import '../App.css'
 import Counter from './counter';
 
-const Player = props => {
+const Player = ({ name, index, score, removePlayer, updatePlayerScore }) => {
   return (
     <div className="player">
       <div className="player-name">
-        <a className="remove-player" onClick={ () => props.removePlayer(props.index) }>✖</a>
-        {props.name}
+        <a className="remove-player" onClick={ () => removePlayer(index) }>✖</a>
+        {name}
       </div>
       <div className="player-score">
         <Counter
-        index={props.index}
-        updatePlayerScore={props.updatePlayerScore}
-        score={props.score} />
+        index={index}
+        updatePlayerScore={updatePlayerScore}
+        score={score} />
       </div>
     </div>
   );
