@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import '../App.css';
 
 const Stats = ({ players, score }) => {
@@ -23,8 +23,5 @@ const Stats = ({ players, score }) => {
  )
 }
 
-Stats.propTypes = {
- players: PropTypes.array.isRequired,
-};
 
 export default Stats;
